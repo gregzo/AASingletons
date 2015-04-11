@@ -5,6 +5,9 @@ A pure Swift framework providing a base classes for singletons interacting with 
 
 My first Swift project, it hopefully raises some interesting topics regarding design patterns: hiding implementation details to provide as true a black box as possible meant finding workarounds and bending the language in inelegant ways. Proposals for more idiomatic, composition based patterns would be very much welcome!
 
+*AASingleton* is the pseudo abstract base class handling callbacks and instantiation / refs of specific subclass instances.
+*PhotoLibraryManager* and *LocationManager* are example implementations of *AASingleton* derived classes. They may be derived themselves.
+
 **Use**
 
 ( *PhotoLibraryManager* derives from *AASingleton* )
@@ -52,4 +55,4 @@ My first Swift project, it hopefully raises some interesting topics regarding de
 
 3. In the case where requesting an instance triggers an authorization request, *AASingleton* must store a reference to the callback to be executed when authorization is granted/denied. Problem: closures aren't castable even if parameters and return types are compatible. How to store callbacks passing specific *AASingleton* instances in the same dictionary then? My solution here was again a small generic wrapper, *GenericCallback*, which keeps a private reference to a specific callback and publicly exposes a closure of type *( value: Any? )->Void*. It simply casts value to *T* and fires the specific callback if the cast succeeds.
 
-4. It
+4. 
