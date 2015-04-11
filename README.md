@@ -7,7 +7,7 @@ My first Swift project, it hopefully raises some interesting topics regarding de
 
 Template Use:
 
-(''')let result = PhotoLibraryManager.getAuthorizedInstance()
+        let result = PhotoLibraryManager.getAuthorizedInstance()
         { ( authorizedInstance: PhotoLibraryManager? ) -> Void in
             
             if authorizedInstance == nil
