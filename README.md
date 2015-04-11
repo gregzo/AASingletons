@@ -1,13 +1,13 @@
 # AASingletons
 **Async Authorised Singletons**
 
-A pure Swift framework providing a base classes for singletons interacting with authorization dependent APIs, such as PhotoKit or CoreLocation.
+A pure Swift framework providing a base classes for singletons interacting with authorization dependent APIs, such as *Photos* or *CoreLocation*.
 
 My first Swift project, it hopefully raises some interesting topics regarding design patterns: hiding implementation details to provide as true a black box as possible meant finding workarounds and bending the language in inelegant ways. Proposals for more idiomatic, composition based patterns would be very much welcome!
 
 **Use**
 
-( PhotoLibraryManager derives from AASingleton )
+( *PhotoLibraryManager* derives from *AASingleton* )
 
         let result = PhotoLibraryManager.getAuthorizedInstance()
         { ( authorizedInstance: PhotoLibraryManager? ) -> Void in
