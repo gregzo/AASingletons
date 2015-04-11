@@ -1,5 +1,5 @@
 # AASingletons
-** Async Authorised Singletons **
+**Async Authorised Singletons**
 
 A pure Swift framework providing a base classes for singletons interacting with authorization dependent APIs, such as PhotoKit or CoreLocation.
 
