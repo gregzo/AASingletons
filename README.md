@@ -5,11 +5,11 @@ A pure Swift framework providing a base classes for singletons interacting with 
 
 My first Swift project, it hopefully raises some interesting topics regarding design patterns: hiding implementation details to provide as true a black box as possible meant finding workarounds and bending the language in inelegant ways. Proposals for more idiomatic, composition based patterns would be very much welcome!
 
-Template Use:
+**Use**
 
         let result = PhotoLibraryManager.getAuthorizedInstance()
         { ( authorizedInstance: PhotoLibraryManager? ) -> Void in
-            
+            // Authorization closure
             if authorizedInstance == nil
             {
                 println( "Authorization denied" )
@@ -32,7 +32,7 @@ Template Use:
             let manager = result.authorizedInstance!
             
         case .WaitingForAuthorization:
-            println( "Authorization requested, please be patient whilst the user thinks about it. authCallback will fire once he's decided." )
+            println( "Authorization requested, please be patient whilst the user thinks about it." )
         }
 
 # Goals
