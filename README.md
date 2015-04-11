@@ -3,7 +3,9 @@
 
 A pure Swift framework providing a base classes for singletons interacting with authorization dependent APIs, such as *Photos* or *CoreLocation*.
 
-My first Swift project, it hopefully raises some interesting topics regarding design patterns: hiding implementation details to provide as true a black box as possible meant finding workarounds and bending the language in inelegant ways. Proposals for more idiomatic, composition based patterns would be very much welcome!
+My first Swift project, it hopefully raises some interesting topics regarding design patterns: hiding implementation details to provide as true a black box as possible meant finding workarounds and bending the language in inelegant ways. Proposals for more idiomatic, composition based patterns would be very much welcome! 
+
+[StackOverflow question link](http://stackoverflow.com/questions/29576017/swift-design-patterns-looking-for-more-idiomatic-alternatives-to-my-authorised)
 
 *AASingleton* is the pseudo abstract base class handling callbacks and instantiation / refs of specific subclass instances.
 *PhotoLibraryManager* and *LocationManager* are example implementations of *AASingleton* derived classes. They may be derived themselves.
