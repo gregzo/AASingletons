@@ -6,6 +6,7 @@ A pure Swift framework providing a base classes for singletons interacting with 
 My first Swift project, it hopefully raises some interesting topics regarding design patterns: hiding implementation details to provide as true a black box as possible meant finding workarounds and bending the language in inelegant ways. Proposals for more idiomatic, composition based patterns would be very much welcome!
 
 **Use**
+
 ( PhotoLibraryManager derives from AASingleton )
 
         let result = PhotoLibraryManager.getAuthorizedInstance()
