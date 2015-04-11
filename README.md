@@ -15,4 +15,5 @@ My first Swift project, it hopefully raises some interesting topics regarding de
 # Challenges
 
 1. For AASingleton to be able to instantiate any derived type, getAuthorizedInstance is implemented as a generic method where T is inferred from the authCallback closure parameter type. As generics can only be instantiated through a required public init, this meant exposing derived class initializers which would very much defeat the purpose. Hacky workaround: the required init takes a token parameter which only the base class can provide ( implemented as a random Int ). This fakes protected behaviour, functional but very inelegant.
-2. 
+2. AASingleton must keep references to each derived instance, and serve them upon request. Problem: how to identify instances? The obvious solution is a dictionary of instances stored by type, but Swift Any.Type does not implement Hashable. My workaround is to implement a small wrapper, HashableType, and an internal helper class, TypeDictionary( declared in AASingleton.swift )
+3. 
