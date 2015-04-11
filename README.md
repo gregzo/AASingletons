@@ -51,7 +51,7 @@ My first Swift project, it hopefully raises some interesting topics regarding de
 * Funnel all access to instances through *AASingleton.getAuthorizedInstance*, which may provide instances via an async closure if authorization is needed
 * Instantiate specific singletons only if authorization is granted, and provide template implementation for authorization requests
 
-# Challenges
+# Sins
 
 1. For *AASingleton* to be able to instantiate any derived type, *getAuthorizedInstance* is implemented as a generic method where *T* is inferred from the *authCallback* closure parameter type. As generics can only be instantiated if a *required public* initializer is implemented, this meant exposing derived class initializers which would very much defeat the purpose. Hacky workaround: the required init takes a token parameter which only the base class can provide ( implemented as a random Int ). This fakes protected behaviour, functional but very inelegant.
 
