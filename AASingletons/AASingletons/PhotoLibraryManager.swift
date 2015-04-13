@@ -16,8 +16,8 @@ public class PhotoLibraryManager: AASingleton
         get
         {
             let status = PHPhotoLibrary.authorizationStatus()
-            let asyncAuth : AsyncAuthorization = _asyncAuthorizationForAuthorization( status )
-            return asyncAuth
+            
+            return _asyncAuthorizationForAuthorization( status )
         }
     }
     

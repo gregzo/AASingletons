@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import AASingletons
 
 class AASingletonsTests: XCTestCase {
     

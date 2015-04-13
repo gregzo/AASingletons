@@ -15,6 +15,10 @@
 		5215CE811AD8F0650045A0C0 /* HashableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5215CE7C1AD8F0650045A0C0 /* HashableType.swift */; };
 		5215CE821AD8F0650045A0C0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5215CE7D1AD8F0650045A0C0 /* LocationManager.swift */; };
 		5215CE831AD8F0650045A0C0 /* PhotoLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5215CE7E1AD8F0650045A0C0 /* PhotoLibraryManager.swift */; };
+		525FA6FF1ADBA801003CF667 /* AddressBookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525FA6FE1ADBA801003CF667 /* AddressBookManager.swift */; };
+		52CE460D1ADBC63500646D13 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CE460C1ADBC63500646D13 /* CalendarManager.swift */; };
+		52CE460F1ADBCEDD00646D13 /* EventKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CE460E1ADBCEDD00646D13 /* EventKitManager.swift */; };
+		52CE46111ADBD06A00646D13 /* RemindersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CE46101ADBD06A00646D13 /* RemindersManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +43,10 @@
 		5215CE7C1AD8F0650045A0C0 /* HashableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashableType.swift; sourceTree = "<group>"; };
 		5215CE7D1AD8F0650045A0C0 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5215CE7E1AD8F0650045A0C0 /* PhotoLibraryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryManager.swift; sourceTree = "<group>"; };
+		525FA6FE1ADBA801003CF667 /* AddressBookManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookManager.swift; sourceTree = "<group>"; };
+		52CE460C1ADBC63500646D13 /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		52CE460E1ADBCEDD00646D13 /* EventKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventKitManager.swift; sourceTree = "<group>"; };
+		52CE46101ADBD06A00646D13 /* RemindersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				5215CE7A1AD8F0650045A0C0 /* AASingleton.swift */,
+				52CE460E1ADBCEDD00646D13 /* EventKitManager.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -137,6 +146,9 @@
 			children = (
 				5215CE7D1AD8F0650045A0C0 /* LocationManager.swift */,
 				5215CE7E1AD8F0650045A0C0 /* PhotoLibraryManager.swift */,
+				525FA6FE1ADBA801003CF667 /* AddressBookManager.swift */,
+				52CE460C1ADBC63500646D13 /* CalendarManager.swift */,
+				52CE46101ADBD06A00646D13 /* RemindersManager.swift */,
 			);
 			name = Concrete;
 			sourceTree = "<group>";
@@ -251,7 +263,11 @@
 				5215CE821AD8F0650045A0C0 /* LocationManager.swift in Sources */,
 				5215CE801AD8F0650045A0C0 /* GenericCallback.swift in Sources */,
 				5215CE7F1AD8F0650045A0C0 /* AASingleton.swift in Sources */,
+				525FA6FF1ADBA801003CF667 /* AddressBookManager.swift in Sources */,
 				5215CE831AD8F0650045A0C0 /* PhotoLibraryManager.swift in Sources */,
+				52CE460F1ADBCEDD00646D13 /* EventKitManager.swift in Sources */,
+				52CE460D1ADBC63500646D13 /* CalendarManager.swift in Sources */,
+				52CE46111ADBD06A00646D13 /* RemindersManager.swift in Sources */,
 				5215CE811AD8F0650045A0C0 /* HashableType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,6 +459,7 @@
 				5215CE731AD8F0130045A0C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5215CE741AD8F0130045A0C0 /* Build configuration list for PBXNativeTarget "AASingletonsTests" */ = {
 			isa = XCConfigurationList;
@@ -451,6 +468,7 @@
 				5215CE761AD8F0130045A0C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

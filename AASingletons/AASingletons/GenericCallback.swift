@@ -10,7 +10,7 @@ import Foundation
 
 final public class GenericCallback< T >
 {
-    func executeCallback( value: Any? ) -> Void
+    public func executeCallback( value: Any? ) -> Void
     {
         if let specificValue = value as? T
         {
@@ -18,7 +18,7 @@ final public class GenericCallback< T >
         }
     }
     
-    init( callback: ( value: T? )->Void )
+    public init( callback: ( value: T? )->Void )
     {
         self.specificCallback = callback
     }

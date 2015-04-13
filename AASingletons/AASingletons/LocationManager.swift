@@ -114,7 +114,7 @@ public class LocationManager: AASingleton
     
     
     
-    //MARK: Nested Delegate to Closure Helper
+    //MARK: Nested 'delegate to closure' helper class
     /**
         Nested helper class which sets itself temporarily as delegate of CLLocationManager
         Also checks for presence in info.plist of the appropriate usage description key, and logs
