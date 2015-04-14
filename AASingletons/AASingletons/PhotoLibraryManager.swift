@@ -26,8 +26,13 @@ public class PhotoLibraryManager: AASingleton
         PHPhotoLibrary.requestAuthorization()
         {
             ( newStatus: PHAuthorizationStatus) -> Void in
-            let asyncStatus : AsyncAuthorization = PhotoLibraryManager._asyncAuthorizationForAuthorization( newStatus )
-            authCallback( auth: asyncStatus )
+            
+            dispatch_async( dispatch_get_main_queue() )
+            {
+                ()->Void in
+                let asyncStatus : AsyncAuthorization = PhotoLibraryManager._asyncAuthorizationForAuthorization( newStatus )
+                authCallback( auth: asyncStatus )
+            }
         }
     }
     
@@ -49,5 +54,29 @@ public class PhotoLibraryManager: AASingleton
     required public init?( token: Any )
     {
         super.init(token: token)
+    }
+    
+    //FIXME: temp implementation
+    public func getLastPhoto( targetSize: CGSize, completion: ( image: UIImage? ) -> Void ) -> Void
+    {
+        let imgManager = PHImageManager.defaultManager()
+
+        var requestOptions = PHImageRequestOptions()
+        requestOptions.synchronous = true
+        
+        var fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: true)]
+        
+        if let fetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions)
+        {
+            if fetchResult.count > 0
+            {
+                imgManager.requestImageForAsset( fetchResult.objectAtIndex(fetchResult.count - 1  ) as! PHAsset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: requestOptions )
+                { (image, _) in
+                
+                    completion( image: image )
+                }
+            }
+        }
     }
 }

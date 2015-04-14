@@ -56,7 +56,11 @@ public class AddressBookManager : AASingleton
                 AddressBookManager.__addressBook = nil
             }
             
-            authCallback( auth: AddressBookManager.authorizationStatus )
+            dispatch_async( dispatch_get_main_queue() )
+            {
+                authCallback( auth: AddressBookManager.authorizationStatus )
+            }
+            
         }
         
         ABAddressBookRequestAccessWithCompletion( addressBook, handler )
