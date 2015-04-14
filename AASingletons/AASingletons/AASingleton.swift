@@ -142,9 +142,9 @@ public class AASingleton
     
     internal typealias GenericCallbackType = ( value: Any? ) -> Void
     
-    private static var __sharedInstances = TypeDictionary< AASingleton >()
-    private static var __callbacks = TypeDictionary< [ GenericCallbackType ] >()
-    private static var __token : Int = random()
+    private static var __sharedInstances    = TypeDictionary< AASingleton >()
+    private static var __callbacks          = TypeDictionary< [ GenericCallbackType ] >()
+    private static var __token : Int        = random()
     
     // placing required initializer in the private section as it fakes protected access control
     /**

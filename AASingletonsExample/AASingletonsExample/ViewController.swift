@@ -15,28 +15,37 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        var activity : UIActivityIndicatorView?;
+        
         let result = PhotoLibraryManager.getAuthorizedInstance { (authorizedInstance: PhotoLibraryManager? ) -> Void in
             
-            println( authorizedInstance )
+            activity?.stopAnimating()
+            activity?.removeFromSuperview()
+            self.displayLastPic()
         }
         
-        println( result.status )
-        
-        self.view.addSubview( LastPicView(frame: CGRectMake( 50, 50, 200, 200 ) ) )
-        
-        let res2 = LocationManager.getAuthorizedInstance { (authorizedInstance: LocationManager? ) -> Void in
-            
-            println( authorizedInstance )
+        if result.status == AAInstanceRequestStatus.WaitingForAuthorization
+        {
+            activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray )
+            activity?.center = self.view.center
+            activity?.frame.origin.y = 50
+            activity?.color = UIColor.blueColor()
+            self.view.addSubview( activity! )
+            activity?.startAnimating()
         }
-        
-        println( res2 )
-        
-        let res3 = AddressBookManager.getAuthorizedInstance { (authorizedInstance: AddressBookManager? ) -> Void in
-            
-            println( authorizedInstance )
+        else if result.status == AAInstanceRequestStatus.Granted
+        {
+            self.displayLastPic()
         }
-        
-        println( res3 )
+    }
+    
+    private func displayLastPic()
+    {
+        var frame = self.view.frame
+        frame.size.height = frame.width
+        frame.origin.y = 50
+        let lastPic = LastPicView( frame: frame )
+        self.view.addSubview( lastPic )
     }
 
     override func didReceiveMemoryWarning() {
