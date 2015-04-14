@@ -174,6 +174,9 @@ public class LocationManager: AASingleton
                 return
             }
             manager.delegate = nil
+            
+            // Unlike in other block based auth requests, no need to dispatch to main thread here: delegate method alread fired 
+            // on the UI thread.
             self.callback( auth: LocationManager._asyncAuthorizationForLocationAuthorization( status ) )
             self.selfRef = nil
         }

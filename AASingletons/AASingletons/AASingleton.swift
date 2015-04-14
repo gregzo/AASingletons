@@ -168,15 +168,15 @@ public class AASingleton
 // Can't nest generic type, declaring it here
 final internal class TypeDictionary< ValueType >
 {
-    private lazy var _dic = Dictionary< HashableType, ValueType >()
+    private lazy var _dic = Dictionary< String, ValueType >()
     
     func getObjectForType< T >( type: T.Type ) -> ValueType?
     {
-        return _dic[ HashableType( type: type ) ]
+        return _dic[ toString( type ) ]
     }
     
     func setObjectForType( object: ValueType?, type: Any.Type )
     {
-        _dic[ HashableType( type: type ) ] = object
+        _dic[ toString( type ) ] = object
     }
 }
