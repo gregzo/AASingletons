@@ -22,7 +22,7 @@ public class LocationManager: AASingleton
         denies location authorization in settings while 
         app is running
     */
-    public var clLocationManager : CLLocationManager?
+    final public var clLocationManager : CLLocationManager?
     {
         return LocationManager.__clLocationManager
     }
@@ -39,7 +39,7 @@ public class LocationManager: AASingleton
     
     //MARK: - Compulsory Overrides
     
-    public class override var authorizationStatus : AsyncAuthorization
+    final public class override var authorizationStatus : AsyncAuthorization
     {
         get
         {
@@ -49,7 +49,7 @@ public class LocationManager: AASingleton
         }
     }
     
-    internal class override func requestAuthorization( callback: AsyncAuthCallback )
+    final internal class override func requestAuthorization( callback: AsyncAuthCallback )
     {
         // called by super class only when auth is .NotDetermined
         // we'll need a CLLocationManager to request auth, and a temporary LocationAuthRequest instance
@@ -97,7 +97,7 @@ public class LocationManager: AASingleton
     /**
         Map CLAuthorizationStatus to AsyncAuthorization
     */
-    internal static func _asyncAuthorizationForLocationAuthorization( status: CLAuthorizationStatus ) -> AsyncAuthorization
+    final internal class func _asyncAuthorizationForLocationAuthorization( status: CLAuthorizationStatus ) -> AsyncAuthorization
     {
         switch status
         {
@@ -120,7 +120,7 @@ public class LocationManager: AASingleton
         Also checks for presence in info.plist of the appropriate usage description key, and logs
         if not present
     */
-    internal class LocationAuthRequest : NSObject, CLLocationManagerDelegate
+    final internal class LocationAuthRequest : NSObject, CLLocationManagerDelegate
     {
         var callback : AsyncAuthCallback!
         
@@ -143,7 +143,7 @@ public class LocationManager: AASingleton
             {
                 self.callback = nil
                 super.init()
-                println( "\( key ) missing in plist" )
+                println( "\( key ) missing in info.plist" )
                 return nil
             }
             

@@ -36,7 +36,7 @@ public class AASingleton
     
     :returns: a tuple containing both the instance( if already authorized ) and an instance request status. If status == .WaitingForAuthorization, authCallback will fire when authorization is granted/denied.
     */
-    final public class func getAuthorizedInstance< T where T : AASingleton >( authCallback: ( authorizedInstance: T? )->Void )
+    final public class func getAuthorizedInstance< T where T : AASingleton >( authorizationCallback authCallback: ( authorizedInstance: T? )->Void )
         -> ( authorizedInstance: T?, status: AAInstanceRequestStatus )
     {
         let status : AsyncAuthorization = T.authorizationStatus
@@ -142,9 +142,9 @@ public class AASingleton
     
     internal typealias GenericCallbackType = ( value: Any? ) -> Void
     
-    private static var __sharedInstances    = TypeDictionary< AASingleton >()
-    private static var __callbacks          = TypeDictionary< [ GenericCallbackType ] >()
-    private static var __token : Int        = random()
+    private static var __sharedInstances = TypeDictionary< AASingleton >()
+    private static var __callbacks = TypeDictionary< [ GenericCallbackType ] >()
+    private static var __token : Int = random()
     
     // placing required initializer in the private section as it fakes protected access control
     /**

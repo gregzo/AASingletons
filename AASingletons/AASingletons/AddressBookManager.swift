@@ -11,7 +11,7 @@ import AddressBook
 
 public class AddressBookManager : AASingleton
 {
-    public class override var authorizationStatus : AsyncAuthorization
+    final public class override var authorizationStatus : AsyncAuthorization
     {
         get
         {
@@ -21,14 +21,14 @@ public class AddressBookManager : AASingleton
         }
     }
     
-    public var addressBook : ABAddressBookRef!
+    final public var addressBook : ABAddressBookRef!
     {
         return AddressBookManager.__addressBook
     }
     
     private static var __addressBook : ABAddressBookRef!
     
-    internal class override func requestAuthorization( authCallback: AsyncAuthCallback )
+    final internal class override func requestAuthorization( authCallback: AsyncAuthCallback )
     {
         var err : Unmanaged< CFErrorRef >?
         var addressBook: ABAddressBookRef!

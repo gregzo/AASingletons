@@ -11,7 +11,7 @@ import Photos
 
 public class PhotoLibraryManager: AASingleton
 {
-    public class override var authorizationStatus : AsyncAuthorization
+    final public class override var authorizationStatus : AsyncAuthorization
     {
         get
         {
@@ -21,7 +21,7 @@ public class PhotoLibraryManager: AASingleton
         }
     }
     
-    internal class override func requestAuthorization( authCallback: AsyncAuthCallback )
+    final internal class override func requestAuthorization( authCallback: AsyncAuthCallback )
     {
         PHPhotoLibrary.requestAuthorization()
         {

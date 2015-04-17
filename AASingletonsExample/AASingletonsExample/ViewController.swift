@@ -11,18 +11,20 @@ import AASingletons
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         var activity : UIActivityIndicatorView?;
         
-        let result = PhotoLibraryManager.getAuthorizedInstance { (authorizedInstance: PhotoLibraryManager? ) -> Void in
+        let result = PhotoLibraryManager.getAuthorizedInstance( authorizationCallback:
+        {                                                     ( authorizedInstance: PhotoLibraryManager? ) -> Void in
             
             activity?.stopAnimating()
             activity?.removeFromSuperview()
             self.displayLastPic()
-        }
+        })
         
         if result.status == AAInstanceRequestStatus.WaitingForAuthorization
         {
@@ -37,6 +39,13 @@ class ViewController: UIViewController {
         {
             self.displayLastPic()
         }
+        
+        let calResult = CalendarManager.getAuthorizedInstance( authorizationCallback:
+        {                                                    ( authorizedInstance: CalendarManager? ) -> Void in
+            println( authorizedInstance?.calendars )
+        })
+        
+        println( calResult.authorizedInstance?.calendars )
     }
     
     private func displayLastPic()
@@ -61,12 +70,13 @@ class LastPicView: UIView
     {
         super.init(frame: frame )
         
-        let result = PhotoLibraryManager.getAuthorizedInstance { (authorizedInstance: PhotoLibraryManager? ) -> Void in
+        let result = PhotoLibraryManager.getAuthorizedInstance( authorizationCallback:
+        {                                                     ( authorizedInstance: PhotoLibraryManager? ) -> Void in
             
             authorizedInstance?.getLastPhoto( frame.size, completion: self.setImage )
-        }
+        })
         
-        result.authorizedInstance?.getLastPhoto( frame.size, completion: setImage )
+        result.authorizedInstance?.getLastPhoto( frame.size, completion: self.setImage )
     }
 
     required init(coder aDecoder: NSCoder)
@@ -81,7 +91,8 @@ class LastPicView: UIView
         {
             return
         }
-        let imageView = UIImageView(frame:  self.bounds )
+        let imageView = UIImageView( frame:  self.bounds )
+        imageView.contentMode = UIViewContentMode.ScaleAspectFill
         imageView.image = image!
         self.addSubview( imageView )
     }

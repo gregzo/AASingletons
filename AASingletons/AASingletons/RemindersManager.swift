@@ -11,7 +11,7 @@ import EventKit
 
 public class RemindersManager : EventKitManager
 {
-    public override class func entityType() -> EKEntityType
+    final public override class func entityType() -> EKEntityType
     {
         return EKEntityTypeReminder
     }

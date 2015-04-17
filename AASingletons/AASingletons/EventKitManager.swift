@@ -11,7 +11,7 @@ import EventKit
 
 public class EventKitManager : AASingleton
 {
-    public class override var authorizationStatus : AsyncAuthorization
+    final public class override var authorizationStatus : AsyncAuthorization
     {
         get
         {
@@ -26,9 +26,19 @@ public class EventKitManager : AASingleton
         return -1
     }
     
-    internal class override func requestAuthorization( authCallback: AsyncAuthCallback )
+    final public var eventStore : EKEventStore
     {
-        self.__eventStore?.requestAccessToEntityType( self.entityType() )
+        return EventKitManager.__eventStore
+    }
+    
+    public var calendars : [ EKCalendar ]?
+    {
+        return self.eventStore.calendarsForEntityType( self.dynamicType.entityType() ) as? [ EKCalendar ]
+    }
+    
+    final internal class override func requestAuthorization( authCallback: AsyncAuthCallback )
+    {
+        self.__eventStore.requestAccessToEntityType( self.entityType() )
             { ( granted: Bool, error: NSError! ) -> Void in
                 
                 dispatch_async( dispatch_get_main_queue() )
@@ -38,7 +48,7 @@ public class EventKitManager : AASingleton
         }
     }
     
-    private static var __eventStore: EKEventStore? = EKEventStore()
+    private static var __eventStore: EKEventStore = EKEventStore()
     
     private class func _asyncAuthorizationForAuthorization( status: EKAuthorizationStatus ) -> AsyncAuthorization
     {

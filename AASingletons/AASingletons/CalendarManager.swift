@@ -11,7 +11,20 @@ import EventKit
 
 public class CalendarManager : EventKitManager
 {
-    public override class func entityType() -> EKEntityType
+    required public init?( token: Any )
+    {
+        
+        super.init(token: token)
+        
+        if toString( self.dynamicType ) == toString( EventKitManager.self )
+        {
+            println( "Cannot instantiate pseudo-abstract class EventKitManager" )
+            return nil
+        }
+    }
+
+    
+    final public override class func entityType() -> EKEntityType
     {
         return EKEntityTypeEvent
     }
